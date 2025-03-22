@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/db";
 import { error } from "console";
 import User from "@/models/User";
-import { json } from "stream/consumers";
 
 export async function POST(request: NextRequest) {
     
@@ -16,19 +15,32 @@ export async function POST(request: NextRequest) {
             );
         };
 
-        await connectToDatabase()
+        await connectToDatabase();
 
-        const existingUser = await User.create({email})
+        const existingUser = await User.findOne({email});
 
         if (existingUser) {
             return NextResponse.json(
-                {error: "User already exists"},
+                {error: "Email already exists"},
                 { status: 400}
             )
         }
 
+        await User.create({
+            email,
+            password
+        })
+
+        return NextResponse.json(
+            { message: "User created" },
+            { status: 201 }
+        )
+
     } catch (error) {
-        
+        return NextResponse.json(
+            { error: "Failed to register user" },
+            { status: 500 }
+        )
     }
 
 }

@@ -36,6 +36,7 @@ export async function POST(request: NextRequest) {
             { status: 201 }
         )
 
+
     } catch (error) {
         return NextResponse.json(
             { error: "Failed to register user" },
@@ -44,3 +45,14 @@ export async function POST(request: NextRequest) {
     }
 
 }
+
+
+// Sending request from frontend itself 
+
+// const res =  fetch("/api/auth/register", {
+//     method: "POST",
+//     headers: {"Content-Type": "application/json"},
+//     body: JSON.stringify({ email, password}) 
+// })  
+
+// res.json()

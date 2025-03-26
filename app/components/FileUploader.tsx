@@ -42,7 +42,32 @@ export default function FileUpload({ onSuccess, onProgress, fileType = "image" }
     };
 
     const validateFile = (file: File) => {
-        if  
+        if (fileType === "video") {
+
+            if(!file.type.startsWith("video/")){
+                setError("Upload a video file only")
+                return false
+            }
+
+            if(file.size > 100 * 1024 * 1024){  //100 mb
+                setError("Video size must less than 100mb")
+                return false
+            }
+        }
+        else{
+            const validTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"]
+            if(!validTypes.includes(file.type)){
+                setError("Upload a valid file(jpeg, png, gif, webp)")
+                return false
+            }
+
+            if(file.size > 10 * 1024 * 1024){  //100 mb
+                setError("Image size must less than 10mb")
+                return false
+            }
+        }
+
+        return false
     }
 
     return (
@@ -51,8 +76,6 @@ export default function FileUpload({ onSuccess, onProgress, fileType = "image" }
             <p>Upload an image with advanced options</p>
             <IKUpload
                 fileName="test-upload.jpg"
-                tags={["sample-tag1", "sample-tag2"]}
-                customCoordinates={"10,10,10,10"}
                 isPrivateFile={false}
                 useUniqueFileName={true}
                 responseFields={["tags"]}

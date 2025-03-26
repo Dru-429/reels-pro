@@ -35,3 +35,6 @@ export default withAuth(
 )
 
 //write all the path that needs to run the middleware
+export const config = {
+    matcher:[ "/((?!_next/static|_next/image|favicon.ico|public/).*)" ]
+}

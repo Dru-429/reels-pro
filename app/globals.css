@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* @plugin "daisyui";
+@plugin "daisyui";
 
 @plugin "daisyui/theme" {
   name: "oceanWave";
@@ -36,7 +36,7 @@
   --border: 1px;
   --depth: 1;
   --noise: 0;
-} */
+}
 
 :root {
   --background: #ffffff;

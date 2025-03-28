@@ -12,7 +12,7 @@ export default function VideoComponent({ video }: { video: IVideo }) {
             style={{ aspectRatio: "9/16" }}
           >
             <IKVideo
-              path={video.videoURL}
+              path={video.videoUrl}
               transformation={[
                 {
                   height: "1920",

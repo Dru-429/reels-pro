@@ -8,8 +8,8 @@ export interface IVideo {
     _id?: mongoose.Types.ObjectId;
     title: string;
     description: string;
-    videoURL: string;
-    thumbnailURL: string;
+    videoUrl: string;
+    thumbnailUrl: string;
     controls?: boolean;
     transformation?: {
         height: number,
@@ -24,8 +24,8 @@ export interface IVideo {
 const videoSchema = new Schema<IVideo>({
     title: { type: String, required: true },
     description: { type: String, required: true },
-    videoURL: { type: String, required: true },
-    thumbnailURL: { trype: String, required: true },
+    videoUrl: { type: String, required: true },
+    thumbnailUrl: { trype: String, required: true },
     controls: { type: Boolean, default: false },
     transformation: {
         height: { type: Number, default: VIDEO_DIMENSIONS.height },

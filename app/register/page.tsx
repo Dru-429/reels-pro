@@ -1,49 +1,49 @@
-// "use client"
+"use client"
 
-// import { useRouter } from 'next/navigation'
-// import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
 
-// const page = () => {
+const page = () => {
 
-//     const [email, setEmail] = useState("")
-//     const [password, setPassword] = useState("")
-//     const [confrimPassword, setConfrimPassword] = useState("")
-//     const [error, setError] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confrimPassword, setConfrimPassword] = useState("")
+    const [error, setError] = useState("")
 
-//     const router = useRouter()
+    const router = useRouter()
 
-//     const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-//         e.preventDefault()
-//         if(password !== confrimPassword){
-//             setError("Your Password dose not match")
-//         }
+    const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        if(password !== confrimPassword){
+            setError("Your Password dose not match")
+        }
 
-//         try {
-//            const res =  await fetch("/api/auth/register", {
-//              method: "POST",
-//              headers: {"Content-Type": "application/json"},
-//              body: JSON.stringify({email, password}),
-//            })
+        try {
+           const res =  await fetch("/api/auth/register", {
+             method: "POST",
+             headers: {"Content-Type": "application/json"},
+             body: JSON.stringify({email, password}),
+           })
 
-//            console.log(res)
+           console.log(res)
 
-//            const data = await res.json()
-//            if (!res.ok){
-//             setError("Resister failed")
-//            }
+           const data = await res.json()
+           if (!res.ok){
+            setError("Resister failed")
+           }
 
-//            router.push("/login")
+           router.push("/login")
            
-//         } catch (error) {
-//             console.log(error)
-//         }
-//     }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
-//   return (
-//     <div>
+  return (
+    <div>
         
-//     </div>
-//   )
-// }
+    </div>
+  )
+}
 
-// export default page
+export default page

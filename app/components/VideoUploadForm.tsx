@@ -19,7 +19,7 @@ export default function VideoUploadForm() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const { showNotification } = useNotification();
 
-  const {
+  const {   
     register,
     handleSubmit,
     setValue,
